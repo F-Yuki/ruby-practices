@@ -25,12 +25,20 @@ puts top.center(20)
 puts week.join(" ")
 print "   " * firstday
 
-weekly = firstday
-(1..lastday).each do |date|
-  print date.to_s.rjust(2) + " "
-  weekly = weekly + 1
-  if weekly % 7 == 0
-    print "\n"
-  end
+# weekly = firstday
+# (1..lastday).each do |date|
+#   print date.to_s.rjust(2) + " "
+#   weekly = weekly + 1
+#   if weekly % 7 == 0
+#     print "\n"
+#   end
+# end
+# print "\n"
+
+(Date.new(year, month, 1)..Date.new(year, month, -1)).each do |date|
+  # 何か出力する
+  print date.day.to_s.rjust(2) + " "
+  # 土曜日だったら改行する
+  puts if date.saturday?
 end
-print "\n"
+puts
