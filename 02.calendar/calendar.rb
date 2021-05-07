@@ -17,25 +17,15 @@ else
 end
 
 top = Date.new(year, month, 1).strftime("%B %Y")
-firstday = Date.new(year, month, 1).wday
-lastday = Date.new(year, month, -1).day
+firstday = Date.new(year, month, 1)
+lastday = Date.new(year, month, -1)
 week = %w(日 月 火 水 木 金 土)
 
 puts top.center(20)
 puts week.join(" ")
-print "   " * firstday
+print "   " * firstday.wday
 
-# weekly = firstday
-# (1..lastday).each do |date|
-#   print date.to_s.rjust(2) + " "
-#   weekly = weekly + 1
-#   if weekly % 7 == 0
-#     print "\n"
-#   end
-# end
-# print "\n"
-
-(Date.new(year, month, 1)..Date.new(year, month, -1)).each do |date|
+(firstday..lastday).each do |date|
   # 何か出力する
   print date.day.to_s.rjust(2) + " "
   # 土曜日だったら改行する
