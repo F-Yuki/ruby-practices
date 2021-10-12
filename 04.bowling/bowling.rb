@@ -17,14 +17,9 @@ end
 # 空の変数framesを作成、取得された値が代入される
 frames = []
 lane = []
-# count = 0
 shots.each do |shot|
   if frames.length > 9 # 10フレーム用の処理。10フレームを迎えていたら最後のframeにshotを追加する。
     frames.last << shot
-  # elsif shot == 'X' # ストライク
-  #   frame << 10
-  #   frames << frame # framesにframeを追加する
-  #   frame = [] # 次のフレームのために配列を空にする
   elsif lane.count == 1 # 2投目用の処理。frameの要素が1つだったら2投目を追加。
     lane << shot
     frames << lane
