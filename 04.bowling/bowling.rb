@@ -14,20 +14,8 @@ scores.each do |score| # 変数sccoreの値がXの場合はshotsに［10，0］�
 end
 
 # フレーム毎に分割
-# 空の変数framesを作成、取得された値が代入される
-frames = []
-lane = []
-shots.each do |shot|
-  if frames.length > 9 # 10フレーム用の処理。10フレームを迎えていたら最後のframeにshotを追加する。
-    frames.last << shot
-  elsif lane.count == 1 # 2投目用の処理。frameの要素が1つだったら2投目を追加。
-    lane << shot
-    frames << lane
-    lane = []
-  else
-    lane << shot
-  end
-end
+frames = shots.each_slice(2).to_a
+frames = frames[0..8].concat([frames[9..].flatten])
 
 # スコア計算
 point = 0
@@ -52,5 +40,4 @@ frames.each_with_index do |frame, i| # 変数frameは配列の要素、変数i�
            end
 end
 
-p frames
 puts point
