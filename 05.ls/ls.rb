@@ -3,15 +3,15 @@
 dir = Dir.glob('*')
 
 max_column_count = 3.0
-total_folders_count = dir.size
-number_of_lines = (total_folders_count.to_f / max_column_count).ceil(0)
+total_files_and_directories = dir.size
+number_of_lines = (total_files_and_directories.to_f / max_column_count).ceil(0)
 
 files = []
 dir.each_slice(number_of_lines) do |n|
   files << n
 end
 
-last_line_lack_element_count = (max_column_count - total_folders_count % max_column_count).to_i
+last_line_lack_element_count = (max_column_count - total_files_and_directories % max_column_count).to_i
 
 if last_line_lack_element_count != 0
   last_line_lack_element_count.times do
