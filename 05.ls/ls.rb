@@ -3,17 +3,17 @@
 dir = Dir.glob('*')
 
 max_column_count = 3.0
-total_files_count_and_total_directories_count = dir.size
-number_of_lines = (total_files_count_and_total_directories_count.to_f / max_column_count).ceil(0)
+total_elements_count = dir.size
+number_of_lines = (total_elements_count.to_f / max_column_count).ceil(0)
 
 files = []
 dir.each_slice(number_of_lines) do |n|
   files << n
 end
 
-last_line_lack_element_count = (max_column_count - total_files_count_and_total_directories_count % max_column_count).to_i
+last_line_lack_element_count = (max_column_count - total_elements_count % max_column_count).to_i
 
-if last_line_lack_element_count != 0
+if last_line_lack_element_count != 3
   last_line_lack_element_count.times do
     files.last << nil
   end
