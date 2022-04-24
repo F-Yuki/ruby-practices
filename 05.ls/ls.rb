@@ -4,11 +4,11 @@ require 'optparse'
 
 opt_a = nil
 opt = OptionParser.new
-opt.on('-a') { |v| opt_a = v }
+opt.on('-r') { |v| opt_a = v }
 opt.parse(ARGV)
 
 dir = if opt_a
-        Dir.glob('*', File::FNM_DOTMATCH)
+        Dir.glob('*').reverse
       else
         Dir.glob('*')
       end
