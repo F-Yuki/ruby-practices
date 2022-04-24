@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
-dir = Dir.glob('*')
+require 'optparse'
+
+opt_a = nil
+opt = OptionParser.new
+opt.on('-a') { |v| opt_a = v }
+opt.parse(ARGV)
+
+dir = if opt_a
+        Dir.glob('*', File::FNM_DOTMATCH)
+      else
+        Dir.glob('*')
+      end
 
 MAX_COLUMN_COUNT = 3
 total_elements_count = dir.size
